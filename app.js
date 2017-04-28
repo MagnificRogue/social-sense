@@ -2,14 +2,21 @@ var express = require('express');
 var passport = require('passport');
 var expressVue = require('express-vue');
 var session = require('express-session');
+var graphQLHTTP = require('express-graphql');
+var schema = require('./graphql/schema/schema.js');
 var config = require('./config.js');
 var app = express();
 
 // Configure view engine to render pug templates.
 
+app.use('/graphql',cors(), graphQLHTTP({
+	schema,
+	graphiql:true,	
+}));
+
+
 app.set('view engine', 'pug');
 app.set('views', __dirname +  '/views');
-
 
 
 // Use application-level middleware for common functionality, including
@@ -36,5 +43,5 @@ config.authProviders.forEach((provider) => {
 var routes = require('./routes.js');
 app.use(routes);
 
-app.listen(3000);
-console.log('Listening on port 3000...');
+app.listen(config.app.port);
+console.log('Listening on port ' + config.app.port + '...');

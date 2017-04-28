@@ -48,5 +48,7 @@ config.db = {};
   config.db.password = process.env.DB_PASSWORD || '';
   config.db.database = process.env.DB_SCHEMA || '';
 
+config.app = {};
+  config.app.port = process.env.PORT || '3000';
 
 module.exports = config;
