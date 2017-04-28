@@ -1,11 +1,11 @@
 {
-  "name": "social-sense-auth-server",
+  "name": "social-sense",
   "scripts": {
-    "start": "node server.js",
-    "serve": "nodemon server.js"
+    "start": "node app.js",
+    "serve": "nodemon app.js"
   },
-  "version": "0.0.1",
-  "description": "A simple server to provide authorization tokens to social sense",
+  "version": "0.0.2",
+  "description": "The Social Observatory",
   "keywords": [
     "express",
     "passport",
@@ -23,7 +23,6 @@
     "body-parser": "^1.13.2",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.3.5",
-    "ejs": "^2.3.3",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "morgan": "^1.6.1",

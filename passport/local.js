@@ -53,9 +53,8 @@ router.get('/login',function(req, res){
 });
 
 router.post('/login',   passport.authenticate('local', { failureRedirect: '/login' }), function(req, res, next) {
-  res.render('home', {user:req.user});
+  res.redirect('/home');
 });
-
 
 router.get('/logout', function(req, res){
   req.logout();
@@ -107,7 +106,6 @@ router.post('/register',function(req,res){
         var newUser = {username: req.body.username, password: hash};
         
         db.storeUser(newUser, function(err, result){
-          console.log('Created!');
           return res.redirect('/home'); 
         });
 
@@ -115,10 +113,6 @@ router.post('/register',function(req,res){
     });
 
   });
-});
-
-router.get('/register', function(req,res){
-  res.render('register');
 });
 
 module.exports = router;

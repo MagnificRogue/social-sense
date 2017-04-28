@@ -1,15 +1,16 @@
 var express = require('express');
 var passport = require('passport');
+var expressVue = require('express-vue');
 var session = require('express-session');
-var redis = require("redis");
-var client = redis.createClient();
 var config = require('./config.js');
-
 var app = express();
 
-// Configure view engine to render EJS templates.
-app.set('views', __dirname + '/views');
-app.set('view engine', 'pug')
+// Configure view engine to render pug templates.
+
+app.set('view engine', 'pug');
+app.set('views', __dirname +  '/views');
+
+
 
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
@@ -25,14 +26,6 @@ app.use(session({ secret: 'keyboard cat',
 app.use(passport.initialize());
 app.use(passport.session());
 
-function loggedIn(req, res, next) {
-  if (req.user) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-}
-
 
 // Register all the passport authentication routes
 config.authProviders.forEach((provider) => {
@@ -40,15 +33,8 @@ config.authProviders.forEach((provider) => {
   app.use(routes)
 });
 
-// Define routes.
-app.get('/home', loggedIn, function(req, res) {
-  res.render('home', { user: req.user });
-});
-
-app.get('/login', function(req, res){
-    res.render('login');
-});
-
+var routes = require('./routes.js');
+app.use(routes);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
