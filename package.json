@@ -29,11 +29,18 @@
     "passport": "^0.2.2",
     "passport-facebook": "^2.0.0",
     "passport-fitbit-oauth2": "^1.0.2",
+    "passport-flickr": "^0.2.0",
     "passport-github2": "^0.1.10",
+    "passport-instagram": "^1.0.0",
     "passport-linkedin": "^1.0.0",
     "passport-local": "^1.0.0",
+    "passport-pinterest": "^1.0.0",
     "passport-reddit": "^0.2.4",
+    "passport-spotify": "^0.3.1",
+    "passport-tumblr": "^0.1.2",
     "passport-twitter": "^1.0.4",
+    "passport-weibo": "^0.1.2",
+    "passport-youtube-v3": "^2.0.0",
     "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
